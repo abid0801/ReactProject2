@@ -5,6 +5,10 @@ import {BrowserRouter as Router,  Route } from 'react-router-dom';
 import Header from './Header';
 import AddContact from './AddContact';
 import ContactList from './ContactList'; 
+import 'react-notifications-component/dist/theme.css'
+// import ReactNotification from 'react-notifications-component'
+
+
 
 function App() {
 
@@ -37,9 +41,9 @@ function App() {
     <div className= "ui container">
     <Router>
     <Header/>
-  
+    
     <Route path="/add" component={() => (<AddContact/> )} />
-   <Route path="/" exact component={() => <ContactList contacts= {contacts} getContactID={removeContactHandler}/>} />
+    <Route path="/" exact component={() => <ContactList contacts= {contacts} getContactID={removeContactHandler}/>} />
 
 
 

@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { uuid } from 'uuidv4';
+import notification from "./Notification"
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
+// p
+
 const AddContact = () => {
 
     const [name, setName]= React.useState("");
@@ -13,7 +19,18 @@ const AddContact = () => {
     };
 
     
-    
+    //   const notification = {
+    //     title: "Contact Added",
+    //     message: "Configurable",
+    //     type: "info",
+    //     insert: "top",
+    //     container: "bottom-right",
+    //     animationIn: ["animate__animated animate__fadeIn"], // `animate.css v4` classes
+    //     animationOut: ["animate__animated animate__fadeOut"] // `animate.css v4` classes
+    //   };
+
+      
+
     const addName= React.useCallback((ev) => {
         ev.preventDefault();
         setName(ev.target.value);
@@ -47,7 +64,7 @@ const AddContact = () => {
           newContact.name = contact.name;
           newContact.email = contact.email;
           setContacts([...contacts,{id: uuid(), ...newContact}]);
-          alert(" Contact saved");
+          store.addNotification(notification);
           
         };
 
@@ -58,6 +75,7 @@ const AddContact = () => {
 
         return(
             <div class name="ui main">
+            <ReactNotification/>
             <h2> Add Contact</h2>
             <form className= "ui form" onSubmit={add}> 
             <div className="field">
